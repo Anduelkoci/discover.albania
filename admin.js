@@ -1,14 +1,16 @@
 const PASSWORD = "admin123";
 
-if(!localStorage.getItem("adminLogged")){
+if (localStorage.getItem("adminLogged") !== "true") {
+
   const pass = prompt("Enter admin password:");
 
-  if(pass !== PASSWORD){
+  if (pass === PASSWORD) {
+    localStorage.setItem("adminLogged", "true");
+  } else {
     alert("Access denied");
-    window.location.href="index.html";
-  }else{
-    localStorage.setItem("adminLogged",true);
+    window.location.href = "index.html";
   }
+
 }
 
 function getCities(){
