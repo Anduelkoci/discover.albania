@@ -1,0 +1,109 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    </head>
+    <body>
+    <link rel="stylesheet" href="style.css">
+     <header class="main-header">
+
+  <div class="logo">
+    <a href="index.html">Discover Albania</a>
+  </div>
+
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="explore.html">Explore</a>
+    <a href="#">Food</a>
+    <a href="#">Nature</a>
+    <a href="#">Contact</a>
+    <a href="admin.html" id="adminLink" style="display:none;">Admin</a>
+  </nav>
+
+</header>
+     <section class="cities-header">
+     <h1>Cities of Albania</h1>
+      <p>Explore history, culture and beautiful destinations</p>
+     </section>
+     <div class="city">
+        <div class="city-images">
+     <img src="./tirana1.png" >
+     <img src="./tirana2.png">
+        </div>
+      <h3 class="city-title">
+       <a href="tirana.html" class="city-link">Tirana</a>
+      </h3>
+      <p class="city-text">
+        Tirana is the vibrant capital of Albania known for colorful
+        buildings, cafes and modern lifestyle.
+      </p>
+     <div class="city-images">
+      <img src="./berati1.png">
+      <img src="./berati2.png" alt="">
+      </div>
+      <h3 class="city-title">Berat</h3>
+      <p class="city-text">
+        Berat is a UNESCO World Heritage city called the
+        City of a Thousand Windows.
+      </p>
+       <div class="city-images">
+      <img src="./gjirokaster1.png" >
+      <img src="./gjirokaster2.png" alt="">
+       </div>
+      <h3 class="city-title">Gjirokastër</h3>
+      <p class="city-text">
+        A historic stone city with a beautiful castle and
+        traditional bazaar.
+      </p>
+          <div class="city-images">
+      <img src="./ksamili1.png">
+      <img src="./ksamili2.png">
+      </div>
+      <h3 class="city-title">Ksamil</h3>
+      <p class="city-text">
+        Famous for crystal clear waters and small islands
+        in the Albanian Riviera.
+      </p>
+     </div>
+     <div id="citiesContainer"></div>
+  <div id="lightbox">
+
+  <span id="close">&times;</span>
+
+  <span id="prev">&#10094;</span>
+
+  <img id="lightbox-img" src="" alt="">
+
+  <span id="next">&#10095;</span>
+
+</div>
+ <div id="lightbox">
+    <span id="close">✕</span>
+    <button id="prev">❮</button>
+    <img id="lightbox-img">
+    <button id="next">❯</button>
+  </div>
+  <script src="script.js"></script>
+  <script>
+const savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+
+const container = document.querySelector(".city");
+
+savedCities.forEach(city=>{
+  container.insertAdjacentHTML("beforeend",`
+    <div class="city">
+      <div class="city-images">
+        <img src="${city.image}">
+      </div>
+      <h3 class="city-title">${city.name}</h3>
+      <p class="city-text">${city.description}</p>
+    </div>
+  `);
+});
+</script>
+    </body>
+    </html>
