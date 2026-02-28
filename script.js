@@ -2,23 +2,44 @@ document.addEventListener("DOMContentLoaded", () => {
 const images = document.querySelectorAll(
     ".city-images img, .city-pro-image img, .history-img"
   );
-  const isAdmin = localStorage.getItem("isAdmin");
+  const isAdmin = localStorage.getItem("adminLogged");
 
-if(isAdmin === "true"){
-  enableEditing();
-}
-let clicks = 0;
+  if (isAdmin === "true") {
+    enableEditing();
+    showAdminLink();
+  }
 
-const logo = document.querySelector(".logo");
+  function enableEditing() {
+    document.querySelectorAll("[data-edit]").forEach(el => {
+      el.contentEditable = true;
+      el.style.outline = "2px dashed red";
+    });
+  }
 
-if(logo){
-  logo.addEventListener("click", () => {
-    clicks++;
-    if(clicks === 5){
-      window.location.href="admin.html";
+  function showAdminLink() {
+    const adminLink = document.getElementById("adminLink");
+    if (adminLink) {
+      adminLink.style.display = "inline-block";
+    }
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.shiftKey && e.key === "A") {
+      window.location.href = "admin.html";
     }
   });
-}
+  let clicks = 0;
+  const logo = document.querySelector(".logo");
+
+  if (logo) {
+    logo.addEventListener("click", () => {
+      clicks++;
+      if (clicks === 5) {
+        window.location.href = "admin.html";
+      }
+    });
+  }
+
+});
   const container = document.getElementById("citiesContainer");
   if (container) {
   fetch("/api/cities")
@@ -155,7 +176,6 @@ if(logo){
     lightboxImg.style.cursor = "grab";
   });
 
-});
 function enableEditing(){
 
   document.querySelectorAll("[data-edit]").forEach(el => {
