@@ -1,6 +1,6 @@
-const PASSWORD = "admin123";
-
 document.addEventListener("DOMContentLoaded", () => {
+
+  const PASSWORD = "admin123";
 
   const isLogged = localStorage.getItem("adminLogged");
 
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (pass === PASSWORD) {
       localStorage.setItem("adminLogged", "true");
+      alert("Login successful");
     } else {
       alert("Access denied");
       window.location.href = "index.html";
@@ -70,4 +71,5 @@ function renderCities(){
 }
 
 renderCities();
+
 
