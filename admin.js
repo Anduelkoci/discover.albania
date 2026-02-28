@@ -1,18 +1,23 @@
 const PASSWORD = "admin123";
 
-if (localStorage.getItem("adminLogged") !== "true") {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const pass = prompt("Enter admin password:");
+  const isLogged = localStorage.getItem("adminLogged");
 
-  if (pass === PASSWORD) {
-    localStorage.setItem("adminLogged", "true");
-  } else {
-    alert("Access denied");
-    window.location.href = "index.html";
+  if (isLogged !== "true") {
+
+    const pass = prompt("Enter admin password:");
+
+    if (pass === PASSWORD) {
+      localStorage.setItem("adminLogged", "true");
+    } else {
+      alert("Access denied");
+      window.location.href = "index.html";
+    }
+
   }
 
-}
-
+});
 function getCities(){
   return JSON.parse(localStorage.getItem("cities")) || [];
 }
@@ -65,3 +70,4 @@ function renderCities(){
 }
 
 renderCities();
+
