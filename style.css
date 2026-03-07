@@ -549,6 +549,7 @@ footer {
   align-items: center;
   gap: 40px;
   flex-direction: column;
+  margin-bottom: 60px;
 }
 .city-story {
   padding-bottom: 80px;
