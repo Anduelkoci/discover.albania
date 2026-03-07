@@ -10,9 +10,10 @@
 <body>
 
 <header>
+  
   <h2 class="logo">Discover Albania</h2>
-
-  <nav id="menu">
+   <div class="menu-toggle">&#9776;</div>
+  <nav class="menu">
     <a href="./home.html">Home</a>
     <a href="./cities.html">Cities</a>
     <a href="#">Food</a>
@@ -24,8 +25,15 @@
 
 <section class="hero">
   <div class="hero-text">
-    <h1 class="discover-title-home">Discover Albania</h1>
-    <p class="discover-text-home">
+    <h1 class="discover-title-home"
+        id="heroTitle"
+        data-edit>
+        Discover Albania
+    </h1>
+
+    <p class="discover-text-home"
+       id="heroText"
+       data-edit>
       Welcome to Albania, a beautiful country with amazing beaches,
       mountains and culture waiting to be explored.
     </p>
@@ -35,5 +43,21 @@
 </section>
 
 <script src="script.js"></script>
+<script>
+
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
+
+toggle.onclick = (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("active");
+};
+
+document.addEventListener("click", function(event) {
+  if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+    menu.classList.remove("active");
+  }
+});
+</script>
 </body>
 </html>
