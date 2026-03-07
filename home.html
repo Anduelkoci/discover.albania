@@ -1,10 +1,21 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Home</title>
+</head>
+<body>
+  
+
+
 <header class="main-header">
 
   <div class="logo">
     <a href="index.html">Discover Albania</a>
   </div>
-
+ <div class="menu-toggle">&#9776;</div>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="cities.html">Cities</a>
@@ -30,3 +41,22 @@
 
   </div>
 </section>
+<script src="script.js"></script>
+<script>
+
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
+
+toggle.onclick = (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("active");
+};
+
+document.addEventListener("click", function(event) {
+  if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+    menu.classList.remove("active");
+  }
+});
+</script>
+</body>
+</html>
