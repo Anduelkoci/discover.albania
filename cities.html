@@ -4,16 +4,15 @@
       <meta charset="UTF-8">
       <link rel="stylesheet" href="style.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+      <title>Cities</title>
     </head>
     <body>
-    <link rel="stylesheet" href="style.css">
      <header class="main-header">
 
   <div class="logo">
     <a href="index.html">Discover Albania</a>
   </div>
-
+    <div class="menu-toggle">&#9776;</div>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="cities.html">Cities</a>
@@ -87,23 +86,24 @@
     <img id="lightbox-img">
     <button id="next">❯</button>
   </div>
-  <script src="script.js"></script>
-  <script>
-const savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+ <script>
 
-const container = document.querySelector(".city");
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
-savedCities.forEach(city=>{
-  container.insertAdjacentHTML("beforeend",`
-    <div class="city">
-      <div class="city-images">
-        <img src="${city.image}">
-      </div>
-      <h3 class="city-title">${city.name}</h3>
-      <p class="city-text">${city.description}</p>
-    </div>
-  `);
+toggle.onclick = (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("active");
+};
+
+document.addEventListener("click", function(event) {
+  if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+    menu.classList.remove("active");
+  }
 });
+
 </script>
+  <script src="script.js"></script>
+
     </body>
     </html>
